@@ -6,8 +6,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HTML 5 Boilerplate</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+      body{
+        background-image: url('https://c.tenor.com/CjfdGEo3ncEAAAAd/animation-hyper-speed.gif');
+        background-size: cover;
+        height: 100vh;
+        padding:0;
+        margin:0;
+
+        font-family: 'Calibri', 'sans-serif';
+        font-size: 40px;
+        font-weight: bold;
+        text-align:center;
+      }
+    </style>
   </head>
   <body>
-	<script src="index.js"></script>
+
+    <h1><FONT COLOR="WHITE">Existence</h1>
+      <div style = "text-align:center;">
+         <canvas id="myCanvas" width="1000" height="750" style = "background-color:GREY;">
+       </canvas>
+      </div>
   </body>
+  <script>
+      var canvas = document.getElementById("myCanvas");
+      var ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#FF0000";
+      ctx.fillRect(0, 0, 150, 75);
+</script>
 </html>
