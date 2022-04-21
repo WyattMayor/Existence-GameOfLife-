@@ -1,0 +1,46 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background: black;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+canvas{
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: -1;
+}
+.buttonFormat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: column;
+  }
+  .button {
+    margin-top: 2vh;
+    display: inline-block;
+    color: white;
+    font-size: 17px;
+    padding: 15px;
+    width: 20vw;
+    height: 6vh;
+    word-spacing: normal;
+    letter-spacing: 4px;
+    border: 1px solid white;
+    background: transparent;
+    cursor: pointer;
+  }
+.Title{
+    position: absolute;
+    margin-top:-48vh;
+    font-size: 70px;
+    font-family: "Permanent Marker";
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color:white;
+  }
