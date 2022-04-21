@@ -7,23 +7,12 @@
     <title>HTML 5 Boilerplate</title>
     <link rel="stylesheet" href="style.css">
     <style>
-      .button {
-        background-color: #4CAF50; /* Green */
-        border: none;
-        color: white;
-        padding: 15px 32px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 16px;
-    }
       body{
         background-image: url('https://c.tenor.com/4wAtE3WwF1wAAAAd/space-gif-space.gif');
         background-size: cover;
-        height: 100vh;
+        height:100vh;
         padding:0;
         margin:0;
-
         font-family: 'Calibri', 'sans-serif';
         font-size: 40px;
         font-weight: bold;
@@ -33,12 +22,18 @@
   </head>
   <body>
     <h1><FONT COLOR="WHITE">Existence</h1>
-      <pre style="font-size:20px">
-        Rules:
+      <p>Rules:</p>
+      <pre style="font-size:20px" style="font-weight:normal">
         1. Any live cell with fewer than two live neighbours dies, as if by underpopulation.
         2. Any live cell with two or three live neighbours lives on to the next generation.
         3. Any live cell with more than three live neighbours dies, as if by overpopulation.
         4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
       </pre>
+      <button id="myButton" class="float-left submit-button" >Start</button>
+      <script type="text/javascript">
+        document.getElementById("myButton").onclick = function () {
+        location.href = GameBoard.html;
+    };
+      </script>
   </body>
 </html>
