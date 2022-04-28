@@ -11,9 +11,13 @@
 	<script src="index.js"></script>
 	<script src="Background.js"></script>
   <div style = "text-align:center;">
-     <canvas id="myCanvas" width="1000" height="750" style = "background-color:GREY;">
-   </canvas>
+    <div class="buttonFormat">
+    <button class="StartButton" onclick="window.location.href='index.html'"> Back</button>
+    <button class = "StartButton" onclick = DG(800,400)>Start</button>
+    </div>
   </div>
-  <button type="button" onclick="window.location.href='index.html'"> Back</button>
+      <canvas class = "grid" id="grid" style = background-color:GREY>
+       <script src = "Board.js"></script>  
+      </canvas>
   </body>
 </html>
