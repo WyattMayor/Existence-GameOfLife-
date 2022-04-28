@@ -13,8 +13,12 @@ for (x = 0; x <= w; x += 20) {
     }
 }
 ctx.stroke();
-
+i = 1
+while (i!=0){
+    i++
+}
 };
 drawGrid(800, 400, "grid");
+
 
 
