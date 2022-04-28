@@ -8,12 +8,33 @@ body{
     font-weight: bold;
     text-align:center;
   }
-canvas{
-    position: absolute;
-    top:0;
-    left:0;
+.grid{
+    position: relative;
     z-index: -1;
+    width:800px; 
+    height:400px;
 }
+.StartButton{
+    display: inline-block;
+    color: white;
+    font-size: 20px;
+    padding: 15px;
+    width: 20vw;
+    height: 6vh;
+    word-spacing: normal;
+    letter-spacing: 4px;
+    border: 1px solid white;
+    background: transparent;
+    cursor: pointer;
+}
+.buttonFormat {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    flex-direction: row;
+    }
+
 pre{
     font-size:20px;
     font-weight:normal;
