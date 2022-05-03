@@ -4,9 +4,9 @@ const canvas = document.getElementById('grid');
 const ctx = canvas.getContext("2d");
 
 //Dimensions of the canvas
-canvas.width=800;
+canvas.width=600;
 
-canvas.height=800;
+canvas.height=600;
 
 const res = 10;
 const w = canvas.width /res;
