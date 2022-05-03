@@ -11,8 +11,8 @@ body{
 .grid{
     position: relative;
     z-index: -1;
-    width:800px; 
-    height:800px;
+    width:600px; 
+    height:600px;
 }
 .StartButton{
     display: inline-block;
