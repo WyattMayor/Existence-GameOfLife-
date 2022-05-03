@@ -7,6 +7,12 @@ body{
     font-size: 40px;
     font-weight: bold;
     text-align:center;
+  }
+.grid{
+    position: relative;
+    z-index: -1;
+    width:800px; 
+    height:400px;
 }
 .StartButton{
     display: inline-block;
@@ -19,12 +25,6 @@ body{
     letter-spacing: 4px;
     border: 1px solid white;
     cursor: pointer;
-}    
- .grid{
-     position:relative;
-     z-index:-1;
-     width:800px;
-     height:400px;    
 }
 .buttonFormat {
     display: flex;
@@ -48,3 +48,4 @@ canvas{
     top: 0;
     left: 0;
 }
+
