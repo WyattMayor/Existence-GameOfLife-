@@ -44,3 +44,9 @@ canvas{
     text-transform: uppercase;
     color:white;
   }
+  canvas{
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+}

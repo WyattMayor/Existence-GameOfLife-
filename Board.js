@@ -1,3 +1,4 @@
+
 //Reading in the canvas
 const canvas = document.getElementById('grid');
 const ctx = canvas.getContext("2d");
@@ -42,8 +43,5 @@ function Display(TheGrid){
 //if(GridPiece == 0 && BorderCells == 3)
 //elif (GridPiece == 1 && BorderCells < 3)
 //elif (GridPiece == 1 && BorderCells > 2)
-
-
-
 
 

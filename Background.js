@@ -1,4 +1,12 @@
 let scene, camera, renderer, starGeo, stars;
+      function generateRandomColor(){
+        let maxVal = 0xFFFFFF; // 16777215
+        let randomNumber = Math.random() * maxVal; 
+        randomNumber = Math.floor(randomNumber);
+        randomNumber = randomNumber.toString(16);
+        let randColor = randomNumber.padStart(6, 0);   
+        return `#${randColor.toUpperCase()}`
+      }
       function init() {
         scene = new THREE.Scene();
         camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 1, 1000);
@@ -12,9 +20,9 @@ let scene, camera, renderer, starGeo, stars;
         starGeo = new THREE.Geometry();
         for(let i=0; i<6000;i++){
             let star = new THREE.Vector3(
-            Math.random() * 600 - 300,
-            Math.random() * 600 - 300,
-            Math.random() * 600 - 300
+            Math.random() * 800 - 300,
+            Math.random() * 800 - 300,
+            Math.random() * 800 - 300
           );
           star.velocity = 0;
           star.acceleration = 0.02;
@@ -22,7 +30,7 @@ let scene, camera, renderer, starGeo, stars;
         }
         let sprite = new THREE.TextureLoader().load('Wow.png');
         let starMaterial = new THREE.PointsMaterial({
-          color: 0xaaaaaa,
+          color: generateRandomColor(),
           size: 0.7,
           map: sprite
         });
