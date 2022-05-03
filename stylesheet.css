@@ -1,5 +1,4 @@
 body{
-    background-color: black;
     height:100vh;
     padding:0;
     margin:0;
@@ -24,7 +23,6 @@ body{
     word-spacing: normal;
     letter-spacing: 4px;
     border: 1px solid white;
-    background: transparent;
     cursor: pointer;
 }
 .buttonFormat {
@@ -42,4 +40,10 @@ pre{
 }
 p{
     color:white;
+}
+canvas{
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
 }
