@@ -9,15 +9,14 @@
   </head>
   <body>
 	<script src="index.js"></script>
-	<script src="Background.js"></script>
+  <script src="Background.js"></script>
   <div style = "text-align:center;">
     <div class="buttonFormat">
-    <button class="StartButton" onclick="window.location.href='index.html'" style="background: transparent;"> Back</button>
-    <button style="background: transparent;" class = "StartButton" onclick = DG(800,400)>Start</button>
+    <button class="StartButton" onclick="window.location.href='index.html'"> Back</button>
+    <button class = "StartButton" onclick = DrawGrid()>Start</button>
     </div>
   </div>
-      <canvas class = "grid" id="grid" style = background-color:GREY>
-       <script src = "Board.js"></script>  
-      </canvas>
+    <canvas id="grid"></canvas>
+      <script src = "Board.js"></script>
   </body>
 </html>
