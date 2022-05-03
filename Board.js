@@ -5,7 +5,9 @@ const ctx = canvas.getContext("2d");
 
 //Dimensions of the canvas
 canvas.width=800;
-canvas.hieght=800;
+
+canvas.height=800;
+
 const res = 10;
 const w = canvas.width /res;
 const h = canvas.height/res;
@@ -43,5 +45,3 @@ function Display(TheGrid){
 //if(GridPiece == 0 && BorderCells == 3)
 //elif (GridPiece == 1 && BorderCells < 3)
 //elif (GridPiece == 1 && BorderCells > 2)
-
-
