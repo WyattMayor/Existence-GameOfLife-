@@ -19,6 +19,7 @@ body{
     letter-spacing: 4px;
     border: 1px solid white;
     cursor: pointer;
+}    
  .grid{
      position:relative;
      z-index:-1;
