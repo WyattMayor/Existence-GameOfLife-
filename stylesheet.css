@@ -48,4 +48,13 @@ canvas{
     top: 0;
     left: 0;
 }
-
+.Livecounter{
+    position: absolute;
+    margin-left: 93vw;
+    margin-top: 5vh;
+}
+.counterHeading{
+    position: absolute;
+    margin-left: 75vw;
+    margin-top: 5vh;
+}

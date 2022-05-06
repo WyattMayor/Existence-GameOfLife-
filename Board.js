@@ -11,7 +11,18 @@ canvas.height=600;
 const res = 10;
 const w = canvas.width /res;
 const h = canvas.height/res;
+var evolution = 0
+var StartClicked = false
+var Shape1Clicked = false
+var Shape2Clicked = false
+var RandomClicked = false
+var PauseClicked = false
 
+
+function EvoCounter(){
+    document.getElementById("TurnCounter").innerHTML = evolution;
+    evolution++;
+}
 
 // Drawing a twoD Array of 0s and 1s
 function DrawGrid(){
@@ -20,7 +31,7 @@ function DrawGrid(){
           .map(() => Math.floor(Math.random() * 2)));
 }
 
-var TheGrid = DrawGrid();
+var TheGrid = DrawGridEmpty();
 Display(TheGrid);
 
 console.log(TheGrid);
@@ -28,11 +39,52 @@ console.log(TheGrid);
 requestAnimationFrame(update);
 
 function update(){
-    TheGrid = NextVersion(TheGrid)
+    if(StartClicked == false){
+        setTimeout(function(){ //throttle requestAnimationFrame to 20fps
+            requestAnimationFrame(update)
+        }, 1000/1)
+    }
+    else{
+    EvoCounter();
+    TheGrid = NextVersion(TheGrid);
+    if (Shape1Clicked == true){
+        evolution = 0
+        TheGrid = DrawGridEmpty()
+        TheGrid [30][30] = 1;
+        TheGrid [31][30] = 1;
+        TheGrid [32][30] = 1;
+        console.log(TheGrid)
+        Shape1Clicked = false
+    }
+    else if(Shape2Clicked == true){
+        evolution = 0
+        TheGrid = DrawGridEmpty()
+        TheGrid [30][30] = 1;
+        TheGrid [31][30] = 1;
+        TheGrid [32][30] = 1;        
+        TheGrid [33][29] = 1;
+        TheGrid [33][28] = 1;
+        TheGrid [33][27] = 1;
+        TheGrid [29][29] = 1;
+        TheGrid [29][28] = 1;
+        TheGrid [29][27] = 1;
+        TheGrid [33][27] = 1;
+        TheGrid [33][27] = 1;
+        TheGrid [33][27] = 1;
+        console.log(TheGrid)
+        Shape2Clicked = false
+    }
+    else if(RandomClicked == true){
+        evolution = 0
+        TheGrid = DrawGrid()
+        RandomClicked = false   
+    }
+
     Display(TheGrid);
     setTimeout(function(){ //throttle requestAnimationFrame to 20fps
         requestAnimationFrame(update)
-    }, 1000/1)
+    }, 1000/3)
+}
 }
 
 //NextGrid function draws the next version of the grid
@@ -48,7 +100,6 @@ function bordercells(cell, x, y){
         if (cell[x-1][y-1] == 1){counter = counter + 1}
         if (cell[x][y-1] == 1){counter =counter + 1}
         if (cell[x-1][y+1] == 1){counter =counter + 1}
-        console.log("w")
         return counter;}
     // bottom
     else if (x-1 >= 0 && y-1 >= 0 && x+1 <= 59 && y+1 > 59){
@@ -57,7 +108,6 @@ function bordercells(cell, x, y){
         if (cell[x-1][y-1] == 1){counter =counter + 1}
         if (cell[x][y-1] == 1){counter =counter + 1}
         if (cell[x+1][y] == 1){counter =counter + 1}
-        console.log("h")
         return counter;}
     // right side
     else if (x-1 >= 0 && y-1 >= 0 && x+1 > 59 && y+1 <= 59){
@@ -66,7 +116,6 @@ function bordercells(cell, x, y){
         if (cell[x][y-1] == 1){counter =counter + 1}
         if (cell[x-1][y+1] == 1){counter =counter + 1}
         if (cell[x][y+1] == 1){counter =counter + 1}
-        console.log("q")
         return counter;}
     //left
     else if (x-1 < 0 && y-1 >= 0 && x+1 <= 59 && y+1 <= 59){
@@ -75,7 +124,6 @@ function bordercells(cell, x, y){
         if (cell[x][y+1] == 1){counter =counter + 1}
         if (cell[x+1][y-1] == 1){counter =counter + 1}
         if (cell[x][y-1] == 1){counter =counter + 1}
-        console.log("g")
         return counter;}
     //top
     else if (x-1 >= 0 && y-1 < 0 && x+1 <= 59 && y+1 <= 59){
@@ -84,21 +132,18 @@ function bordercells(cell, x, y){
         if (cell[x+1][y+1] == 1){counter =counter + 1}
         if (cell[x][y+1] == 1){counter =counter + 1}
         if (cell[x-1][y] == 1){counter =counter + 1}
-        console.log("v")
         return counter;}
     //top left
     else if (x-1 < 0 && y-1 < 0 && x+1 <= 59 && y+1 <= 59){
         if (cell[x+1][y] == 1){counter =counter + 1}
         if (cell[x][y+1] == 1){counter =counter + 1}
         if (cell[x+1][y+1] == 1){counter =counter + 1}
-        console.log("b")
         return counter;}
     //bottom right
     else if (x-1 >= 0 && y-1 >= 0 && x+1 > 59 && y+1 > 59){
         if (cell[x-1][y] == 1){counter =counter + 1}
         if (cell[x][y-1] == 1){counter =counter + 1}
         if (cell[x-1][y-1] == 1){counter =counter + 1}
-        console.log("m")
         return counter;}
 
     //top right
@@ -106,7 +151,6 @@ function bordercells(cell, x, y){
         if (cell[x-1][y] == 1){counter =counter + 1}
         if (cell[x][y+1] == 1){counter =counter + 1}
         if (cell[x-1][y+1] == 1){counter =counter + 1}
-        console.log("n")
         return counter;}
     //top left
     else if (x-1 < 0 && y-1 >= 0 && x+1 <= 59 && y+1 > 59){
@@ -128,19 +172,15 @@ function NextVersion(TheGrid){
             }
             else if ((TheGrid[column][row] == 1 && bordercells(TheGrid, column, row) > 3)){
                 NewGrid[column][row] = 0
-                console.log("1")
             }
             else if (TheGrid[column][row] == 1 && bordercells(TheGrid, column, row) < 2){
                 NewGrid[column][row] = 0
-                console.log("2")
             }
             else if ((TheGrid[column][row] == 1 && bordercells(TheGrid, column, row) == 2)){
                 NewGrid[column][row] = 1
-                console.log("3")
             }
             else if ((TheGrid[column][row] == 1 && bordercells(TheGrid, column, row) == 3)){
                 NewGrid[column][row] = 1
-                console.log("4")
             }
             else{NewGrid[column][row] = 0}
         }
@@ -157,7 +197,6 @@ function Display(TheGrid){
         for(let row = 0; row < TheGrid.length; row++) {
             const GridPiece = TheGrid[column][row];
             
-            console.log("yeah")
             ctx.beginPath();
             ctx.rect(column * res, row * res, res, res);
             ctx.stroke();
@@ -166,7 +205,29 @@ function Display(TheGrid){
         }
     }
 }
+    document.getElementById('startButton').addEventListener("click", function() {
+    StartClicked = true
+    });
+    
+    document.getElementById('Random').addEventListener("click", function() {
+    RandomClicked = true});
+    
+    document.getElementById('Shape1').addEventListener("click", function() {
+    Shape1Clicked = true;
+    console.log("Pressed");
+});
 
+    document.getElementById('Shape2').addEventListener("click", function() {
+    Shape2Clicked = true});
+    
+    document.getElementById('Pause').addEventListener("click", function() {
+    PauseClicked = true
+    });
+
+    function DrawGridEmpty(){
+        return new Array(w).fill(0)
+            .map(() => new Array(h).fill(0))
+    }
 
 //Any cell will 3 live neighbors creates another
 //if(GridPiece == 0 && BorderCells == 3)

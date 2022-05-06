@@ -13,12 +13,21 @@
   <div style = "text-align:center;">
     <div class="buttonFormat">
     <button class="StartButton" onclick="window.location.href='index.html'" style="background: transparent;"> Back</button>
-    <button style="background: transparent;" class = "StartButton" >Start</button>
-    <button style="background: transparent;" class = "StartButton" onclick="beacon()" >Random</button>
+    <button style="background: transparent;" id = "startButton" class = "StartButton" >Start</button>
+    <button style="background: transparent;" id = "Pause" class = "StartButton" >Pause</button>
+    <button style="background: transparent;" id = "Random" class = "StartButton" >Random</button>
+    <button style="background: transparent;" id = "Shape1" class = "StartButton" >Shape1</button>
+    <button style="background: transparent;" id = "Shape2" class = "StartButton" >Shape2</button>
+    <button style="background: transparent;" id = "Reset" class = "StartButton" onclick = "window.location.href='GameBoard.html'" >Reset</button>
     </div>
   </div>
-      <canvas class = "grid" id="grid" style = background-color:GREY>
-       <script src = "Board.js"></script>  
-      </canvas>
+      <div class= Livecounter>
+        <p id = TurnCounter>0</p>
+      </div>
+      <div class= counterHeading>
+        <p id = wow>Evolution =</p>
+      </div>
+      <canvas class = "grid" id="grid" style = background-color:White></canvas>
+      <script src = "Board.js"></script>
   </body>
 </html>
