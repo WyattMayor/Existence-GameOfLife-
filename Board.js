@@ -2,6 +2,7 @@
 //Reading in the canvas
 const canvas = document.getElementById('grid');
 const ctx = canvas.getContext("2d");
+let canvaselem = document.querySelector("#grid");
 
 //Dimensions of the canvas
 canvas.width=600;
@@ -17,7 +18,8 @@ var Shape1Clicked = false
 var Shape2Clicked = false
 var RandomClicked = false
 var PauseClicked = false
-
+var co = 0
+var ro = 0
 
 function EvoCounter(){
     document.getElementById("TurnCounter").innerHTML = evolution;
@@ -32,14 +34,15 @@ function DrawGrid(){
 }
 
 var TheGrid = DrawGridEmpty();
+var ClickedGrid = TheGrid
 Display(TheGrid);
-
-console.log(TheGrid);
 
 requestAnimationFrame(update);
 
 function update(){
     if(StartClicked == false){
+        TheGrid = ClickedGrid
+        ClickedGrid = TheGrid
         setTimeout(function(){ //throttle requestAnimationFrame to 20fps
             requestAnimationFrame(update)
         }, 1000/1)
@@ -47,7 +50,7 @@ function update(){
     else{
     EvoCounter();
     TheGrid = NextVersion(TheGrid);
-    if (Shape1Clicked == true){
+    if(Shape1Clicked == true){
         evolution = 0
         TheGrid = DrawGridEmpty()
         TheGrid [30][30] = 1;
@@ -213,22 +216,35 @@ function Display(TheGrid){
     RandomClicked = true});
     
     document.getElementById('Shape1').addEventListener("click", function() {
-    Shape1Clicked = true;
-    console.log("Pressed");
-});
+    Shape1Clicked = true});
 
     document.getElementById('Shape2').addEventListener("click", function() {
     Shape2Clicked = true});
     
     document.getElementById('Pause').addEventListener("click", function() {
-    PauseClicked = true
-    });
+    PauseClicked = true});
+    
+    function getMousePosition(canvas, event) {
+       let rect = canvas.getBoundingClientRect()
+       let x = event.clientX - rect.left
+       let y = event.clientY - rect.top
+       DrawFunction(x,y)
+    }
+    canvaselem.addEventListener("mousedown", function(e) {
+        console.log("register")
+        getMousePosition(canvaselem,e)
+    }); 
+    
 
     function DrawGridEmpty(){
         return new Array(w).fill(0)
             .map(() => new Array(h).fill(0))
     }
 
+    function DrawFunction(co, ro){
+    ClickedGrid[Math.floor(co)/10][Math.floor(ro)/10] = 1
+    }
+    
 //Any cell will 3 live neighbors creates another
 //if(GridPiece == 0 && BorderCells == 3)
 //elif (GridPiece == 1 && BorderCells < 3)

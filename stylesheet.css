@@ -10,7 +10,6 @@ body{
   }
 .grid{
     position: relative;
-    z-index: -1;
     width:600px; 
     height:600px;
 }
@@ -50,11 +49,11 @@ canvas{
 }
 .Livecounter{
     position: absolute;
-    margin-left: 93vw;
-    margin-top: 5vh;
+    left: 93vw;
+    top: 5vh;
 }
 .counterHeading{
     position: absolute;
-    margin-left: 75vw;
-    margin-top: 5vh;
+    left: 75vw;
+    top: 5vh;
 }
