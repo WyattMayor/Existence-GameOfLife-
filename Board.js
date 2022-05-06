@@ -20,6 +20,7 @@ var RandomClicked = false
 var PauseClicked = false
 var co = 0
 var ro = 0
+var PauseClick = 2
 
 function EvoCounter(){
     document.getElementById("TurnCounter").innerHTML = evolution;
@@ -43,6 +44,13 @@ function update(){
     if(StartClicked == false){
         TheGrid = ClickedGrid
         ClickedGrid = TheGrid
+        Display(TheGrid)
+        setTimeout(function(){ //throttle requestAnimationFrame to 20fps
+            requestAnimationFrame(update)
+        }, 1000/60)
+    }
+    else if(PauseClick % 2 != 0){
+        Display(TheGrid)
         setTimeout(function(){ //throttle requestAnimationFrame to 20fps
             requestAnimationFrame(update)
         }, 1000/1)
@@ -222,7 +230,9 @@ function Display(TheGrid){
     Shape2Clicked = true});
     
     document.getElementById('Pause').addEventListener("click", function() {
-    PauseClicked = true});
+    PauseClicked = true
+    PauseClick++
+    });
     
     function getMousePosition(canvas, event) {
        let rect = canvas.getBoundingClientRect()
@@ -242,7 +252,7 @@ function Display(TheGrid){
     }
 
     function DrawFunction(co, ro){
-    ClickedGrid[Math.floor(co)/10][Math.floor(ro)/10] = 1
+    ClickedGrid[Math.floor(co/10)][Math.floor(ro/10)] = 1
     }
     
 //Any cell will 3 live neighbors creates another
